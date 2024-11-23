@@ -66,15 +66,29 @@
 - Diverso: `!=`
 ### bool
 - `&&`
-| x     | y     | x && y |
+
+| x     | y     | `x && y` |
 |-------|-------|--------|
 | true  | true  | true   |
 | true  | false | false  |
 | false | true  | false  |
 | false | false | false  |
+
 - `||`
+
+| x     | y     | x \|\| y |
+|-------|-------|--------|
+| true  | true  | true   |
+| true  | false | true   |
+| false | true  | true   |
+| false | false | false  |
+
 - `!`
 
+| x     | !x    |
+|-------|-------|
+| true  | false |
+| false | true  |
 
 ## I/O di base
 ### Input
