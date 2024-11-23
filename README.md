@@ -1,7 +1,10 @@
-# Guida Rapida al Markdown
+# Corso di Programmazio I dell'UniMi
 
-## Titoli
-I titoli in Markdown si creano usando il simbolo `#`. Più simboli corrispondono a titoli di livello inferiore.
+## Comandi di base del compilatore
+- `go build <NOME-FILE.go>`
+* `./<NOME-FILE>`
+>Per Windows: `<NOME-FILE>`
++ `go run <NOME-FILE.go>`
 
 ### Esempi di Titoli:
 ```markdown
