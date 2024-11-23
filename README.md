@@ -17,21 +17,22 @@
 ### Tipi di Variabile
 - int
 - float64
--
+- bool
 ### Dichiarazioni di variabile
 - Dichiarazione di variabile singola: `var <VARIABILE> <TIPO>`
 - Dichiarazione di variabile multipla `var <VARIABILE>,<VARIABILE>,<VARIABILE> <TIPO>`
-### Shadowing❗️
+### Shadowing
 > ⚠️ Le variabili dichiarate esistono solo all'interno della funzione in cui sono state dichiarate e non in quelle esterne o in quelle contenute
-### Mescolare int e float64❗️
+### Mescolare int e float64
 
-### Esercizi
+#### Esercizi
 - arrotondamento.go
 - estrazione_parte_frazioanria.go
 - estrarre-prima_cifra_decimale.go
 - media_tra_altezze.go
 ### Blank variable
-- `_ = <ESPRESSIONE>` / `_ = <VARIABILE>`
+- `_ = <ESPRESSIONE>`
+- `_ = <VARIABILE>`
 > La blank variable serve ad assegnare cose che non hai intenzione di usare, come fosse un cestino, ma senza la necessità di cancellare la variabile
 
 ## Operatori
@@ -50,7 +51,7 @@
 - Incremento di 1: `x++`
 - Decremento di 1: `x--`
 ### Operatori di assegnamento
-- - Somma: `+=`
+- Somma: `+=`
 - Sottrazione: `-=`
 - Prodotto: `*=`
 - Divisione: `/=`
@@ -63,6 +64,17 @@
 - Minore Uguale: `<=`
 - Uguale: `==`
 - Diverso: `!=`
+### bool
+- `&&`
+| x     | y     | x && y |
+|-------|-------|--------|
+| true  | true  | true   |
+| true  | false | false  |
+| false | true  | false  |
+| false | false | false  |
+- `||`
+- `!`
+
 
 ## I/O di base
 ### Input
@@ -80,8 +92,8 @@
 
 ## Controllo del flusso
 ### if/elif/else
-### Esercizi
-- Leggi 2 frazioni positive e stabilisci se la prima è minore della seconda (`controllo_frazione_minore.go`)\n
-- Date 2 date stabilire se la prima precede la seconda\n
+#### Esercizi
+- Leggi 2 frazioni positive e stabilisci se la prima è minore della seconda (`controllo_frazione_minore.go`)
+- Date 2 date stabilire se la prima precede la seconda
 - Dati a, b, c stabilire se l'equazione ax^2+bx+c = 0 ha 2 soluzioni reali distinte\n
-- Stabilire se la somma di 2 interi ha la cifra delle decine uguale a 7\n
+- Stabilire se la somma di 2 interi ha la cifra delle decine uguale a 7
