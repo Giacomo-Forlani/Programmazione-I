@@ -9,9 +9,24 @@
 - `go help`
 - `go fmt <NOME-FILE>`
 
-### Esempi di Titoli:
-```markdown
-# Titolo H1
-## Titolo H2
-### Titolo H3
-#### Titolo H4
+## Commenti in GO
+- `// ...`
+- `/* ... */`
+
+## Variabili
+### Tipi di Variabile
+- int
+- 
+### Dichiarazioni di variabile
+- Dichiarazione di variabile singola: `var <VARIABILE> <TIPO>`
+- Dichiarazione di variabile multipla `var <VARIABILE>,<VARIABILE>,<VARIABILE> <TIPO>`
+### Assegnamento
+- `<VARIABILE> = <ESPRESSIONE>`
+- Short assignment: `<VARIABILE> := <ESPRESSIONE>`
+> In questo caso non è necesario dichiarare prima la funzione
+### Shadowing
+> ⚠️ Le variabili dichiarate esistono solo all'interno della funzione 
+> in cui sono state dichiarate e non in quele esterne o in quelle contenute
+
+## Operatori
+-
