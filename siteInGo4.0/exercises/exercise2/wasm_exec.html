@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esercizio 2</title>
+  <script src="wasm_exec.js"></script>
+  <script>
+    const go = new Go();
+    WebAssembly.instantiateStreaming(fetch("test.wasm"), go.importObject).then(result => {
+      go.run(result.instance);
+    });
+
+    function sendInput() {
+      const input = document.getElementById("userInput").value;
+      if (typeof readInput === "function") {
+        readInput(input); // Invoca la funzione Go esportata
+      } else {
+        console.error("Funzione 'readInput' non trovata.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Esercizio 2</h1>
+  <input type="text" id="userInput" placeholder="Inserisci qualcosa">
+  <button onclick="sendInput()">Invia</button>
+  <pre id="output"></pre>
+</body>
+</html>

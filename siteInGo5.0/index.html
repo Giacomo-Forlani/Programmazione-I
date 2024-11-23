@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Playground</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        #container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        #editor {
+            height: 400px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+        #output {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            min-height: 100px;
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #input-container {
+            margin-bottom: 20px;
+        }
+        #stdin {
+            width: 100%;
+            height: 60px;
+            margin-top: 8px;
+            padding: 8px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Go Playground</h1>
+        <div id="editor"></div>
+        <div class="controls">
+            <button onclick="runCode()">Run Code</button>
+        </div>
+        <div id="input-container">
+            <label for="stdin">Standard Input (one line per input):</label>
+            <textarea id="stdin" placeholder="Enter input values here, one per line"></textarea>
+        </div>
+        <pre id="output"></pre>
+    </div>
+
+    <script>
+        // Configure Monaco Editor
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs' }});
+        require(['vs/editor/editor.main'], function() {
+            window.editor = monaco.editor.create(document.getElementById('editor'), {
+                value: `package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Estrazione della parte decimale")
+    var f, g float64
+    fmt.Print("n: ")
+    fmt.Scan(&f)
+    g = f - float64(int(f))
+    fmt.Print(g)
+}`,
+                language: 'go',
+                theme: 'vs-light',
+                minimap: { enabled: false }
+            });
+        });
+
+        // Mock console for capturing output
+        let outputBuffer = '';
+        let inputLines = [];
+        let currentInputLine = 0;
+        
+        const mockFmt = {
+            Print: function(text) {
+                outputBuffer += text;
+                updateOutput();
+            },
+            Printf: function(format, ...args) {
+                outputBuffer += format.replace(/%[sdfv]/g, () => args.shift());
+                updateOutput();
+            },
+            Println: function(text) {
+                outputBuffer += text + '\n';
+                updateOutput();
+            },
+            Scan: function(varRef) {
+                if (currentInputLine < inputLines.length) {
+                    if (varRef.type === 'int') {
+                        varRef.value = parseInt(inputLines[currentInputLine], 10);
+                    } else if (varRef.type === 'float64') {
+                        varRef.value = parseFloat(inputLines[currentInputLine]);
+                    } else {
+                        varRef.value = inputLines[currentInputLine];
+                    }
+                    currentInputLine++;
+                } else {
+                    varRef.value = varRef.type === 'int' ? 0 : (varRef.type === 'float64' ? 0.0 : '');
+                }
+            }
+        };
+
+        function updateOutput() {
+            document.getElementById('output').textContent = outputBuffer;
+        }
+
+        function transpileGoToJS(goCode) {
+            // First, normalize line endings
+            goCode = goCode.replace(/\r\n/g, '\n');
+            
+            let jsCode = goCode
+                // Remove Go-specific syntax
+                .replace(/package main/, '')
+                .replace(/import "fmt"/, '')
+                // Handle variable declarations
+                .replace(/var\s+(\w+)\s+string/g, 'let $1 = ""')
+                .replace(/var\s+(\w+)\s+int/g, 'let $1 = 0')
+                .replace(/var\s+(\w+)\s*,\s*(\w+)\s+float64/g, 'let $1 = 0.0, $2 = 0.0')
+                .replace(/var\s+(\w+)\s+float64/g, 'let $1 = 0.0')
+                // Handle type conversions
+                .replace(/float64\(int\(([^)]+)\)\)/g, 'Math.floor($1)')
+                // Handle fmt functions
+                .replace(/fmt\.Print\((.*?)\)/g, 'mockFmt.Print($1)')
+                .replace(/fmt\.Printf\((.*?)\)/g, 'mockFmt.Printf($1)')
+                .replace(/fmt\.Println\((.*?)\)/g, 'mockFmt.Println($1)')
+                .replace(/fmt\.Scan\(&(\w+)\)/g, (match, varName) => {
+                    // Check variable type
+                    const isInt = goCode.includes(`var ${varName} int`);
+                    const isFloat = goCode.includes(`var ${varName} float64`);
+                    const type = isInt ? 'int' : (isFloat ? 'float64' : 'string');
+                    return `let _${varName} = {value: "", type: "${type}"}; ` +
+                           `mockFmt.Scan(_${varName}); ${varName} = _${varName}.value`;
+                })
+                // Wrap in self-executing function
+                .replace(/func main\(\)/, '(function()')
+                .replace(/}$/, '})()');
+            
+            console.log('Transpiled code:', jsCode); // For debugging
+            return jsCode;
+        }
+
+        function runCode() {
+            outputBuffer = '';
+            inputLines = document.getElementById('stdin').value.split('\n');
+            currentInputLine = 0;
+            updateOutput();
+            
+            try {
+                const goCode = window.editor.getValue();
+                const jsCode = transpileGoToJS(goCode);
+                eval(jsCode);
+            } catch (error) {
+                outputBuffer += '\nError: ' + error.message;
+                updateOutput();
+            }
+        }
+    </script>
+</body>
+</html>
