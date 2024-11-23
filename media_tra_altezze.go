@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Print("Media tra 2 numeri interi\n")
+	fmt.Println("Media tra 2 altezze")
 	var h1, h2 int
 	var media float64
 	fmt.Print("n1: ")

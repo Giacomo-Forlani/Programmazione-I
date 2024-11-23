@@ -28,6 +28,12 @@
 > Nelle short assignment non è necesario dichiarare prima la funzione
 ### Shadowing❗️
 > ⚠️ Le variabili dichiarate esistono solo all'interno della funzione in cui sono state dichiarate e non in quelle esterne o in quelle contenute
+### Mescolare int e float64
+> Esercizio: estrazione_parte_frazioanria.go
+> Esercizio: estrarre-prima_cifra_decimale.go
+> Esercizio: media_tra_altezze.go
+### Blank variable
+- `_ = <ESPRESSIONE>`
 
 ## Operatori
 - Somma: `+`
