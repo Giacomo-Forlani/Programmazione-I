@@ -23,10 +23,26 @@
 ### Assegnamento
 - `<VARIABILE> = <ESPRESSIONE>`
 - Short assignment: `<VARIABILE> := <ESPRESSIONE>`
-> In questo caso non è necesario dichiarare prima la funzione
-### Shadowing
-> ⚠️ Le variabili dichiarate esistono solo all'interno della funzione 
-> in cui sono state dichiarate e non in quele esterne o in quelle contenute
+> Nelle short assignment non è necesario dichiarare prima la funzione
+### Shadowing❗️
+> ⚠️ Le variabili dichiarate esistono solo all'interno della funzione in cui sono state dichiarate e non in quelle esterne o in quelle contenute
 
 ## Operatori
+- Somma: `+`
+- Sottrazione: `-`
+- Prodotto: `*`
+- Divisione: `/`
+- Resto: `%`
+
+## I/O di base
+### Input
 -
+### Output
+- Stampare sulla riga corrente: `fmt.Print`
+- - `fmt.Print("Risultati", a, "e", b)`
+- - `fmt.Print(a, b, a + b / a)`
+- Stampare a capo: `fmt.Println`
+- - `fmt.Println("Risultati", a, "e", b)`
+- - `fmt.Println(a, b, a + b / a)`
+
+
