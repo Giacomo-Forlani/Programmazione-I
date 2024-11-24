@@ -26,10 +26,10 @@
 ### Mescolare int e float64
 
 #### Esercizi
-- arrotondamento.go
-- estrazione_parte_frazioanria.go
-- estrarre-prima_cifra_decimale.go
-- media_tra_altezze.go
+- (`arrotondamento.go`)
+- (`estrazione_parte_frazioanria.go`)
+- (`estrarre-prima_cifra_decimale.go`)
+- (`media_tra_altezze.go`)
 ### Blank variable
 - `_ = <ESPRESSIONE>`
 - `_ = <VARIABILE>`
@@ -110,16 +110,43 @@
 - Scrivere un programma che dato il prezzo di un bene e data l'aliquota IVA, determina l'imponibile (`calcolo_imponibile.go`)
 
 ## Controllo del flusso
-### if/elif/else
+### if/else if/else
 #### Esercizi
 - Leggi 2 frazioni positive e stabilisci se la prima è minore della seconda (`controllo_frazione_minore.go`)
-- Date 2 date stabilire se la prima precede la seconda
-- Dati a, b, c stabilire se l'equazione ax^2+bx+c = 0 ha 2 soluzioni reali distinte\n
-- Stabilire se la somma di 2 interi ha la cifra delle decine uguale a 7
+- Date 2 date stabilire se la prima precede la seconda (`controllo_date.go`)
+- Dati a, b, c stabilire se l'equazione ax^2+bx+c = 0 ha 2 soluzioni reali distinte (`ax^2+bx+c.go`)
+- Stabilire se la somma di 2 interi ha la cifra delle decine uguale a 7 (`controllo_decine_7.go`)
+### for
+- for 1-ario (unario)
+```go
+for A{
+    <corpo>
+}
+```
+#### Esercizi
+    - (`MCD_poveri.go`)
+    - (`MCD.go`)
+    - (`somma_n_naturali.go`)
+    - (`gauss_iterato.go`)
+- for 0-ario
+```go
+for {
+    <corpo>
+}
+```
+- for 3-ario
+```go
+for A; B; C{
+    <corpo>
+}
+```
+#### Esercizi
+- Dato n, stampa i primi n quadrati perfetti (`n_quadratti_perfetti.go`)
+- Dato n, stampa le prime n potenze di 2 (`n_potenze_2.go`)
 
 ## Bool
 ### Operatori booleani
-- `&&`
+- AND: `&&`
 
 | x     | y     | x && y |
 |-------|-------|--------|
@@ -128,16 +155,16 @@
 | false | true  | false  |
 | false | false | false  |
 
-- `||`
+- OR: `||`
 
-| x     | y     | x \|\|t y |
+| x     | y     | x \|\| y |
 |-------|-------|--------|
 | true  | true  | true   |
 | true  | false | true   |
 | false | true  | true   |
 | false | false | false  |
 
-- `!`
+- NOT: `!`
 
 | x     | !x    |
 |-------|-------|
@@ -155,3 +182,11 @@
 ### Short-circuit evaluation
 > Lo short-circuit evaluation è una tecnica utilizzata dai linguaggi di programmazione, inclusi Go, per ottimizzare l'esecuzione di espressioni logiche.
 > Fa riferimento al comportamento in cui l'esecuzione di un'operazione logica si interrompe non appena il risultato finale può essere determinato senza dover valutare ulteriori condizioni.
+
+## Esercizi
+- Stabilire se un numero termina con 3 zeri
+- Basandosi sull'anno di nascita e sull'anno corrente, stabilire se una persona è maggiorenne
+- Stabilire se la somma delle cifre è <10
+- Dati 2 numeri stampali in ordine crescente
+- Dati 3 numeri stampali in ordine crescente
+- Stabilire se un anno è bisestile
