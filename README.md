@@ -111,6 +111,15 @@
 
 ## Controllo del flusso
 ### if/else if/else
+```go 
+if <>{
+    <corpo>
+}else if <>{
+    <corpo>
+}else{
+    <corpo>
+}
+```
 #### Esercizi
 - Leggi 2 frazioni positive e stabilisci se la prima è minore della seconda (`controllo_frazione_minore.go`)
 - Date 2 date stabilire se la prima precede la seconda (`controllo_date.go`)
@@ -124,10 +133,10 @@ for A{
 }
 ```
 #### Esercizi
-    - (`MCD_poveri.go`)
-    - (`MCD.go`)
-    - (`somma_n_naturali.go`)
-    - (`gauss_iterato.go`)
+- (`MCD_poveri.go`)
+- (`MCD.go`)
+- (`somma_n_naturali.go`)
+- (`gauss_iterato.go`)
 - for 0-ario
 ```go
 for {
@@ -144,7 +153,45 @@ for A; B; C{
 - Dato n, stampa i primi n quadrati perfetti (`n_quadratti_perfetti.go`)
 - Dato n, stampa le prime n potenze di 2 (`n_potenze_2.go`)
 
-## Bool
+Stampa di pattern
+- Dato n, stampa un quadrato di * con lato n (`quadrato_lato_n.go`)
+- Dato n, stampa un triangolo reattangolo con i cateti lunghi n (`tri_ret_cateti_n.go`)
+
+Lettura ripetuta di input
+- Date n persone, calcola l'altezza media delle persone (`h_media_n_persone.go`)
+
+Lettura con "tappo"
+- calcolare la media di tutti i numeri inseriti fino all'inserimento della cifra 0 (`calcolo_media_tappo.go`)
+- Stbilire se un numero è primo (`numero_primo_tappo.go`)
+
+### 🛑Break
+Interrompe l'esecuzione del ciclo in cui è contenuto
+```go
+for <>{
+    if <>{
+        break
+    }
+}
+```
+- Emersione rapida
+> Con emersione rapida (early return o fail-fast) si riferisce a una tecnica di programmazione in cui le condizioni di errore o i casi speciali vengono gestiti immediatamente, permettendo al flusso principale del codice di rimanere pulito e focalizzato sulla logica principale.
+#### Esercizi
+- 
+
+### 🏃Continue
+Forza la prossima esecuzione del ciclo
+```go
+for <>{
+    if <>{
+        continue
+    }
+}
+```
+#### Esercizi
+- Dato n, stampa i numeri primi <n (`numeri_primi_minori_n.go`)
+- Stampa i primi n numeri primi (`)
+
+## 1️⃣ / 0️⃣ Bool
 ### Operatori booleani
 - AND: `&&`
 
@@ -190,3 +237,5 @@ for A; B; C{
 - Dati 2 numeri stampali in ordine crescente
 - Dati 3 numeri stampali in ordine crescente
 - Stabilire se un anno è bisestile
+
+## Funzioni
