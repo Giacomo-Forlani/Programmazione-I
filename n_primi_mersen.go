@@ -26,7 +26,7 @@ func isMersennePrime(x int) bool {
 	// Controlla se x è della forma 2^p - 1
 	p := 1
 	for {
-		mersenne := int(math.Pow(2, float64(p))) - 1
+		mersenne := (1 << p) - 1 // Usa bit shifting per calcolare 2^p - 1
 		if mersenne == x {
 			return true
 		} else if mersenne > x {
@@ -37,7 +37,7 @@ func isMersennePrime(x int) bool {
 }
 
 func main() {
-	fmt.Print("Controllo se è un numero primo di Mersenne. Inserisci un numero: ")
+	fmt.Println("Controllo se è un numero primo di Mersenne. Inserisci un numero: ")
 	var x int
 	fmt.Scan(&x)
 

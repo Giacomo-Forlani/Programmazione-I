@@ -1,4 +1,4 @@
-# Corso di Programmazio I dell'UniMi
+# Corso di Programmazione I dell'UniMi
 
 ## Comandi di base del compilatore
 - `go build <NOME-FILE.go>`
@@ -14,15 +14,43 @@
 - `/* ... */`
 
 ## Variabili
-### Tipi di Variabile
-- int
-- float64
-- bool
+### Tipi di Basa
+- Interi
+    - Con segno
+        - int
+        - int8
+        - int16
+        - int32
+        - int64
+    - Senza segno
+        - uint
+        - uint8
+        - uint16
+        - uint32
+        - uint64
+- Floating Point
+    - Reali
+        - float32
+        - float64
+    - Complessi
+        - complex64
+        - complex128
+- Altri
+    - string
+    - bool
+    - byte
+    - rune
+    - uintptr
+    - error
+
+#### Interi senza segno
+- Valori: interi ≥ 0
+- Rappresentazione posizionale 
 ### Dichiarazioni di variabile
 - Dichiarazione di variabile singola: `var <VARIABILE> <TIPO>`
 - Dichiarazione di variabile multipla `var <VARIABILE>,<VARIABILE>,<VARIABILE> <TIPO>`
 ### Shadowing
-> ⚠️ Le variabili dichiarate esistono solo all'interno della funzione in cui sono state dichiarate e non in quelle esterne o in quelle contenute
+> Le variabili dichiarate esistono solo all'interno della funzione in cui sono state dichiarate e non in quelle esterne o in quelle contenute
 ### Mescolare int e float64
 
 #### Esercizi
@@ -58,12 +86,12 @@
 - Resto: `%=`
 > `%=` valido solo con int
 ### Operatori di confronto
-- Maggiore: `>`
-- Maggiore Uguale: `>=`
-- Minore: `<`
-- Minore Uguale: `<=`
-- Uguale: `==`
-- Diverso: `!=`
+- Maggiore(>): `>`
+- Maggiore Uguale (≥): `>=`
+- Minore(<): `<`
+- Minore Uguale (≤): `<=`
+- Uguale (=): `==`
+- Diverso (≠): `!=`
 ### bool
 - `&&`
 
@@ -239,3 +267,19 @@ for <>{
 - Stabilire se un anno è bisestile
 
 ## Funzioni
+```go
+func <nome funzione> (<parametri formali>) <tipi di ritorno>{
+    <corpo della funzione>
+}
+```
+
+### Esercizi
+- Dato n intero, scrivi una funziona che restituisca il quadrato di n (`func_quadrato_n.go`)
+- Scrivi una fuzione che calcola l'ipotenusa dati 2 cateti, utilizzando la libreria math (`func_calc_ipotenusa.go`)
+- Dato n intero, scrivi una funzione che determina se n è pari (`func_n_pari.go`)
+- Scrivere una funzione che determina se un numero è divisore di un altro (`func_divisore.go`)
+- Scrivere una funzione che calcola quanti zeri compaiono nella scrittura di un numero. Usala per calcolare quanti 0 ci sono se scrivete tutti i numeri da 1 a 1.000.000 (`func_conta_0.go`)
+- Scrivete una funzione che, date le coordinate di due punti sul piano cartesiano, restituisca il coefficiente angolare della retta passante (`func_coef_ang.go`)
+- Dato n, determina se è un numero primo di Mersen. Usala per scrivere i primi n numeri di Mersen (`n_primi_mersen.go`)
+
+
