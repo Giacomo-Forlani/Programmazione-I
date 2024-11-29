@@ -14,7 +14,7 @@
 - `/* ... */`
 
 ## Variabili
-### Tipi di Basa
+### Tipi di Basi
 - Interi
     - Con segno
         - int
