@@ -45,7 +45,8 @@
 
 #### Interi senza segno
 - Valori: interi ≥ 0
-- Rappresentazione posizionale 
+> Rappresentazione posizionale binaria: 
+
 ### Dichiarazioni di variabile
 - Dichiarazione di variabile singola: `var <VARIABILE> <TIPO>`
 - Dichiarazione di variabile multipla `var <VARIABILE>,<VARIABILE>,<VARIABILE> <TIPO>`
