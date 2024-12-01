@@ -1,49 +1,68 @@
 package main
 
-import (
-	"fmt"
-	"math"
-)
+import "fmt"
+import "math"
 
-// Funzione per controllare se un numero è primo
-func isPrime(n int) bool {
-	if n < 2 {
-		return false
-	}
-	for d := 2; d <= int(math.Sqrt(float64(n))); d++ {
-		if n%d == 0 {
+/*
+ * Given an integer x, it returns true if x is prime
+ */
+func isPrime(x int) bool {
+	for d := 2; float64(d) < math.Sqrt(float64(x)); d++ {
+		if x % d == 0 {
 			return false
 		}
 	}
 	return true
 }
 
-// Funzione per controllare se un numero è un numero primo di Mersenne
+
+/*
+ * Given an integer x, it returns true iff x is an integer power of 2
+ */
+func isPowerOfTwo(x int) bool {
+	for x > 1 {
+		if x % 2 != 0 {
+			return false
+		}
+		x /= 2
+	}
+	return true
+}
+
+/*
+ * Given an integer x that is a power of two, returns the exponent of two y such that 2^y=x
+ */
+func powerOfTwoExponent(x int) int {
+	c := 0
+	for x > 1 {
+		x /= 2
+		c++
+	}
+	return c
+}
+
+/*
+ * Given an integer x, it returns true iff x is a Mersenne prime
+ */
 func isMersennePrime(x int) bool {
 	if !isPrime(x) {
 		return false
 	}
-	// Controlla se x è della forma 2^p - 1
-	p := 1
-	for {
-		mersenne := (1 << p) - 1 // Usa bit shifting per calcolare 2^p - 1
-		if mersenne == x {
-			return true
-		} else if mersenne > x {
-			return false
-		}
-		p++
+	if !isPowerOfTwo(x + 1) {
+		return false
 	}
+	y := powerOfTwoExponent(x + 1)
+	return isPrime(y)
 }
+
+
 
 func main() {
-	fmt.Println("Controllo se è un numero primo di Mersenne. Inserisci un numero: ")
-	var x int
-	fmt.Scan(&x)
-
-	if isMersennePrime(x) {
-		fmt.Println("È un numero primo di Mersenne.")
-	} else {
-		fmt.Println("Non è un numero primo di Mersenne.")
+	for n := 2; ; n++ {
+		if isMersennePrime(n) {
+			fmt.Println(n)
+		}
 	}
 }
+
+
